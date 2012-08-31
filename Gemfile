@@ -18,7 +18,6 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem "twitter-bootstrap-rails", :group => :assets
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -29,6 +28,7 @@ end
 gem 'devise'
 gem 'jquery-rails'
 gem "heroku", "~> 2.30.2"
+gem "twitter-bootstrap-rails", :group => :assets
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
