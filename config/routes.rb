@@ -1,7 +1,6 @@
 Minigroup::Application.routes.draw do
-  devise_for :users
-
-  resources :events
+  devise_for :users 
+  resources :events 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

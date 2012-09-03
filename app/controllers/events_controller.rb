@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+   
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +42,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-
+    @event.user_id = current_user.id
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
