@@ -1,13 +1,5 @@
-<h1>Listing events</h1>
-
+<div class="mainbody">
 <table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
@@ -18,6 +10,10 @@
 <% end %>
 </table>
 
-<br />
-
 <%= link_to 'New Event', new_event_path %>
+<br><br>
+
+<div class="eventsindex">
+Username is looking for [ # of people ] people to [ event ]
+</div>
+</div>
