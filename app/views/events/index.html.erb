@@ -9,7 +9,7 @@
 <div class="eventsindex">
 <% @events.reverse.each do |event|%>
 
-<%= event.user.username %> is looking for [ # people ] to <%= event.name %>
+<%= event.user.username %> is looking for <%= event.people %> people to <%= event.name %>
 <br><hr>
 <% end %>
 
