@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+  
     
     respond_to do |format|
       format.html # index.html.erb
@@ -82,5 +83,10 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+  
+  def views
+    @event = Event.find(params[:id])
+    @event.increment_counter('views')
   end
 end

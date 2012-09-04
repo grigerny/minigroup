@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :name, :user_id, :people
+  attr_accessible :name, :user_id, :people, :views
 end
