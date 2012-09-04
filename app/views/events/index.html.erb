@@ -1,15 +1,9 @@
 <div class="mainbody">
-<table>
-
-</table>
-
-<%= link_to 'New Event', new_event_path %>
-<br><br>
-
+	
 <div class="eventsindex">
 <% @events.reverse.each do |event|%>
 
-<%= event.user.username %> is looking for <%= event.people %> people to <%= event.name %>
+<%= link_to event.user.username, event.user %> is looking for <%= event.people %> people to <%= link_to event.name, event %>
 <br><hr>
 <% end %>
 
