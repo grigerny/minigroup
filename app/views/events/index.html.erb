@@ -1,11 +1,20 @@
-<div class="mainbody">
-	
+<div class="mainbody">	
 <div class="eventsindex">
-	<div class="span12">
+	<div class="span8">
+		What's happening right now?
+<hr class="sexy_line" />​
+<br><br>
+	
 <% @events.reverse.each do |event|%>
-<%= link_to event.user.username, event.user %> is looking for <%= event.people %> people to <%= link_to event.name, event %>
+<%= event.user.username %> is looking for <%= event.people %> people to <%= link_to event.name, event %> with.
 
-<br><hr>
+<div class="views">
+<%= event.views %>
+<i class="icon-fire"></i> 
+</div>
+
+<br>
+<hr>
 <% end %>
 
 </div>
