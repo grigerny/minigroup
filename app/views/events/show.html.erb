@@ -21,5 +21,11 @@
 </div>				
 </div>	
 
+
+<% @event.tags.any? %>
+        <% @event.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+<% end %>
+
 </div>
 </div>	

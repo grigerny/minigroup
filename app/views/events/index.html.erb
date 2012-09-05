@@ -9,7 +9,7 @@
 	
 <% @events.reverse.each do |event|%>
 <%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
-
+<%= event.tag_list %>
 <div class="views">
 <%= event.views %>
 <i class="icon-fire"></i> 

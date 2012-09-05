@@ -85,4 +85,12 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def tagged
+        if params[:tag].present? 
+        @events = Event.tagged_with(params[:tag])
+      else 
+        @events = Event.postall
+      end  
+  end  
 end

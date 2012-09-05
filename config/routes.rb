@@ -4,6 +4,8 @@ Minigroup::Application.routes.draw do
   resources :users
   
   resources :events 
+  
+  match 'tagged' => 'events#tagged', :as => 'tagged'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
