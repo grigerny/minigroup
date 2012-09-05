@@ -1,0 +1,30 @@
+<div class="mainbody">	
+<div class="eventsindex">
+	<div class="span12">
+		<center>
+<%= @event %>​
+<br><br>
+	
+<% @events.reverse.each do |event|%>
+<%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
+<div class="views">
+<%= event.views %>
+<i class="icon-fire"></i> 
+</div>
+<br><br>
+<div class="span11">
+	<div class="row">
+		<div class="tags">
+<% event.tags.each do |tag| %>
+	<%= "#" + tag.name %>
+<% end %>
+</div>
+</div>
+</div>
+<hr>
+<% end %>
+</center>
+</div>
+
+</div>
+</div>
