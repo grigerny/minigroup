@@ -1,13 +1,25 @@
+
+<div class="span12">
 <div class="eventsshow">
-<p id="notice"><%= notice %></p>
+		<%= link_to 'Back', events_path %>
 
+		<div class="span8">
+			<hr class="sexy_line" />​
+		</div>
+<div class="eventsindex">
 
-  Name:
-  <%= @event.name %>
-
-
-
+		
+		<%= @event.user.username %> is looking for <%= @event.people %> people that want to <%= @event.verb %> <%= @event.name + "." %>
+		
 <br><br>
-<%= link_to 'Back', events_path %>
-</div>
+<div class="eventsindexprofile">
+<hr>
+<i>
+"let's get together on a weekend and play a round of Hold'em!"
+</i><br>
 
+</div>				
+</div>	
+
+</div>
+</div>	

@@ -12,7 +12,8 @@
  *= require_tree .
  */
 .navbar{
-	background-color:#fff;
+	font-family:Arial-BoldMT;
+	background-color:ghostwhite;
 	width:auto;
 
 }

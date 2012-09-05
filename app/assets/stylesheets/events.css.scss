@@ -10,13 +10,56 @@
 }
 
 .views{
+	position:fixed;
 	color:red;
 	display:inline;
-	float:right;
 }
 
 .eventsshow{
 	font-family:Arial-BoldMT;
 	font-size:20px;
 	width:100%;
+	position:absolute;
+	width:auto;
+	color:#46A1D1;
+}
+
+.eventsindexprofile{
+	color:#333;
+}
+
+.numofpeople{
+	display:inline;
+	background-color:#F8F7FF;
+	color:black;
+	padding-left:10px;
+	padding-right:5px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-right:5px;
+	box-shadow: inset 0px 1px 3px #888888;
+}
+
+.verbforevent{
+	display:inline;
+	background-color:#F8F7FF;
+	color:black;
+	padding-left:10px;
+	padding-right:5px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-right:5px;
+	box-shadow: inset 0px 1px 3px #888888;
+}
+
+.nameofevent{
+	display:inline;
+	color:#EA9055;
+	padding-left:5px;
+	padding-right:5px;
+	margin-right:5px;
+}
+
+.nameofevent :hover{
+	background-color:#F8F7FF;
 }

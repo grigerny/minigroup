@@ -1,22 +1,25 @@
 <div class="mainbody">	
 <div class="eventsindex">
-	<div class="span8">
-		What's happening right now?
+	<div class="span12">
+		<center>
+		What's happening right now on Cliqspark?
+		
 <hr class="sexy_line" />​
 <br><br>
 	
 <% @events.reverse.each do |event|%>
-<%= event.user.username %> is looking for <%= event.people %> people to <%= link_to event.name, event %> with.
+<%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
 
 <div class="views">
 <%= event.views %>
 <i class="icon-fire"></i> 
+
 </div>
 
 <br>
 <hr>
 <% end %>
-
+</center>
 </div>
 
 </div>
