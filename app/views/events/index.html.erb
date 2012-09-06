@@ -10,7 +10,7 @@
 <% @events.reverse.each do |event|%>
 <%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
 <div class="views">
-<%= event.views %>
+<%= event.impressionist_count(:filter=>:session_hash)%>
 <i class="icon-fire"></i> 
 </div>
 <br><br>
@@ -21,9 +21,9 @@
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
+		<hr>
 	</div>
 </div>
-<hr>
 <% end %>
 </center>
 </div>

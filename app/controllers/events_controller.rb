@@ -1,9 +1,12 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
+  impressionist :actions=>[:show]
+  impressionist :unique => [:session_hash]
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    
   
     
     respond_to do |format|
@@ -16,7 +19,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @event.pageviews
+    
     
     respond_to do |format|
       format.html # show.html.erb
