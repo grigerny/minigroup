@@ -1,32 +1,26 @@
-<div class="mainbody">	
-<div class="eventsindex">
-	<div class="span12">
-		<center>
-		What's happening right now on Cliqspark?
-		
-<hr class="sexy_line" />​
-<br><br>
-	
+	<div class="style">
+	<div class="mainbody">	
+		<div class="eventsindex">
+
 <% @events.reverse.each do |event|%>
-<%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
+<%= event.user.username %> is looking for <%= event.people %> that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
+
 <div class="views">
 <%= event.impressionist_count(:filter=>:session_hash)%>
 <i class="icon-fire"></i> 
 </div>
 <br><br>
-<div class="span11">
-	<div class="row">
+
 		<div class="tags">
 			<% event.tags.each do |tag| %>
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
 		<hr>
-	</div>
-</div>
 <% end %>
-</center>
-</div>
 
-</div>
+
+
+		</div>
+	</div>
 </div>

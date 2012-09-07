@@ -96,4 +96,5 @@ class EventsController < ApplicationController
         @events = Event.postall
       end  
   end  
+  
 end

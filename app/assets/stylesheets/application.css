@@ -13,8 +13,9 @@
  */
 .navbar{
 	font-family:Arial-BoldMT;
-	background-color:ghostwhite;
+	font-size:16px;
 	width:auto;
+	text-align:center;
 
 }
 .navmenu{
@@ -31,7 +32,6 @@
 	box-shadow: inset 0 0 2px #888;
 }	
 .mainbody{	
-	position:absolute;
 	width:auto;
 	color:#46A1D1;
 }
