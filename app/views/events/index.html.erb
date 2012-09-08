@@ -3,7 +3,8 @@
 		<div class="eventsindex">
 
 <% @events.reverse.each do |event|%>
-<%= event.user.username %> is looking for <%= event.people %> that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
+
+<div class="eventsentence">I am looking for <%= event.people %> that want to </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
 
 <div class="views">
 <%= event.impressionist_count(:filter=>:session_hash)%>

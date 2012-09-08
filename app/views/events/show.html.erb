@@ -1,37 +1,46 @@
-	<div class="tags">
+
+
+<div class="styleeventsshow">
+	<br><br>
+<div class="eventsentence">
+	<center>
+		<br>
+				<%= @event.user.username %> is looking for 
+				<%= @event.people %> that want to 
+		<div class="verbforevent">
+				<%= @event.verb %>
+		</div>
+		<div class="nameofevent">
+				<%= @event.name + "." %>
+		</div>
+	</center>	
+</div>	
+
+
+
+<div class="eventshowbody">	
+
+	<div class="tags2">
 		<% @event.tags.any? %>
 		<% @event.tags.each do |tag| %>
 		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
 		<% end %>
 	</div>
-
-<div class="style">
-
-	<div class="mainbody">​
-		<div class="eventsindex">
-			
-<%= @event.user.username %> is looking for <%= @event.people %> that want to <%= @event.verb %> <%= @event.name + "." %>
-<div class="span6">
-Name: 
-<%= @event.user.username %> <br>
-Age:
-<br>
-Sex:
-<br><br>
-</div>
-
-<div class="span12">
-Who?:
-<hr>
-What?:
-<hr>
-Where?:
-<hr>
-When?:
-<hr>
-</div>
-			
-		</div>
+		
+	<br>	
+	<div class="eventsshowleft">
+	
 	</div>
-</div>	
-	<%= link_to 'Back', events_path %>
+	
+	<div class="eventsshowright">
+	
+	</div>
+		
+	<div class="eventsshowright2">	
+		
+	</div>
+
+</div>
+
+</div>
+	

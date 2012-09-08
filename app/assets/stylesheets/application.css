@@ -12,8 +12,8 @@
  *= require_tree .
  */
 .navbar{
-	font-family:Arial-BoldMT;
-	font-size:16px;
+	font-family:Arial;
+	font-size:14px;
 	width:auto;
 	text-align:center;
 
@@ -33,7 +33,7 @@
 }	
 .mainbody{	
 	width:auto;
-	color:#46A1D1;
+	height:auto;
 }
 
 .sexy_line { 
