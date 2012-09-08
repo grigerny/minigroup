@@ -1,26 +1,32 @@
-<div class="mainbody">	
-<div class="eventsindex">
-	<div class="span12">
-		<center>
-<%= @event %>​
-<br><br>
-	
-<% @events.reverse.each do |event|%>
-<%= event.user.username %> is looking for <div class="numofpeople"><%= event.people %> </div>people that want to <div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
-<div class="views">
-<%= event.views %>
+<div class="styleeventsshow">
+	<br><br>
+	<div class="eventsentence">
+	<center>
+		<br>
+		<% @events.reverse.each do |event|%>
+				<%= event.user.username %> is looking for 
+				<%= event.people %> that want to 
+		<div class="verbforevent">
+				<%= event.verb %>
+		</div>
+		<div class="nameofevent">
+				<%= link_to event.name + ".", event %>
+		</div>
+		<div class="views">
+		&nbsp<%= event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 
+		</div>
+	</center>	
+	</div>
+
+<div class="tags">
+	<% event.tags.each do |tag| %>
+		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
+	<% end %>
+</div>	
 
 </div>
 <br><br>
-<div class="span11">
-	<div class="row">
-		<div class="tags">
-<% event.tags.each do |tag| %>
-	<%= "#" + tag.name %>
-<% end %>
-		</div>
-</div>
-</div>
+
 <hr>
 <% end %>
 </center>

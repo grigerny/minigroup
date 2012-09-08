@@ -13,6 +13,9 @@
 		<div class="nameofevent">
 				<%= @event.name + "." %>
 		</div>
+		<div class="views">
+		&nbsp<%= @event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 
+		</div>
 	</center>	
 	</div>	
 
@@ -29,7 +32,16 @@
 		
 	<br>	
 	<div class="eventsshowleft">
-	<%= image_tag @event.user.avatar.url %>
+		More information about this event:
+		<hr>
+		When will this happen?
+		<br><br>
+		Where will it happen?
+		<br><br>
+		How?
+		<div class="showpicborder">
+	<%= image_tag @event.user.avatar.url(:medium) %>
+		</div>
 	</div>
 	
 	<div class="eventsshowright">
