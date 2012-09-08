@@ -8,7 +8,6 @@
 }
 
 .views{
-	position:fixed;
 	color:red;
 	display:inline;
 }
@@ -32,7 +31,6 @@
 	color:#666;
 	display:inline;
 	padding-left:10px;
-	padding-right:5px;
 	padding-top:5px;
 	padding-bottom:5px;
 	margin-right:5px;
@@ -160,6 +158,7 @@
 	background-color:ghostwhite;
 	box-shadow: inset 0px 1px 3px #888888;
 	font-size:20px;
+	
 }
 
 .mainbodyeventsshow{
@@ -178,28 +177,21 @@
 	margin-left:100px;
 	margin-right:100px;
 	height:1000px;
-	position:relative;
 }
 
 .eventsshowleft{
-	float:left;
 	font-family:Arial;
 	color:#666;
 	background-color:#EEEEEE;
 	height:300px;
-	width:300px;
+	width:40%;
 }
 
 .eventsshowright{
-	float:right;
-	background-color:#EEEEEE;
-	height:300px;
-	width:460px;
-	display:inline;
+	background-color:#fff;
+	height:200px;
 }
-
 .eventsshowright2{
-	margin-top:320px;
 	background-color:#EEEEEE;
-	height:600px;
+	height:400px;
 }

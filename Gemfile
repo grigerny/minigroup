@@ -31,6 +31,7 @@ gem "heroku", "~> 2.30.2"
 gem "twitter-bootstrap-rails"
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'impressionist'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -2,7 +2,7 @@
 
 <div class="styleeventsshow">
 	<br><br>
-<div class="eventsentence">
+	<div class="eventsentence">
 	<center>
 		<br>
 				<%= @event.user.username %> is looking for 
@@ -14,7 +14,7 @@
 				<%= @event.name + "." %>
 		</div>
 	</center>	
-</div>	
+	</div>	
 
 
 
@@ -29,7 +29,7 @@
 		
 	<br>	
 	<div class="eventsshowleft">
-	
+	<%= image_tag @event.user.avatar.url %>
 	</div>
 	
 	<div class="eventsshowright">
