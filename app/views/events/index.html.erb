@@ -4,7 +4,8 @@
 
 <% @events.reverse.each do |event|%>
 
-<div class="eventsentence"> <%= image_tag event.user.avatar.url(:thumb) %> I am looking for <%= event.people %> that want to </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
+<div class="picborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
+<div class="eventsentence"> I am looking for <%= event.people %> that want to </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= link_to event.name + ".", event %></div>
 
 <div class="views">
 <%= event.impressionist_count(:filter=>:session_hash)%>
