@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   impressionist :actions=>[:show]
   impressionist :unique => [:session_hash]
+  respond_to :html, :json
   # GET /events
   # GET /events.json
   def index
@@ -65,16 +66,8 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event.update_attributes(params[:event])
+    respond_with @event
   end
 
   # DELETE /events/1
