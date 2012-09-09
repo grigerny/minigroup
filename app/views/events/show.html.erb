@@ -36,7 +36,27 @@
 		<hr>
 		When will this happen?
 		<br>
-		<%= best_in_place @event, :when %>
+		<%= best_in_place @event, :when, :type => :date, :nil => "Click me to add content!" %> 
+		
+	
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+		
+		<script>
+			$(function() {
+				$( "#datepicker" ).datepicker();
+			});
+			</script>
+
+
+		<div id="datepicker"></div>
+	
+	
+	
+	
+	
+		
 		<br><br>
 		Where will it happen?
 		<br><br>
