@@ -35,7 +35,13 @@
 		More information about this event:
 		<hr>
 		When?
-		<%= best_in_place @event, :when, :nil => "click to edit" %> 
+		<% if can? :update, @event %>
+		<%= best_in_place @event, :when, :nil => "click to edit" %>
+		<% end %> 
+		<% if cannot? :update, @event %>
+		<%= @event.when %>
+		<% end %> 
+	
 		<br><br>	
 		Where?
 		<br><br>

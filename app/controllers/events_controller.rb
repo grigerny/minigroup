@@ -3,6 +3,8 @@ class EventsController < ApplicationController
   impressionist :actions=>[:show]
   impressionist :unique => [:session_hash]
   respond_to :html, :json
+  authorize_resource
+  
   # GET /events
   # GET /events.json
   def index
@@ -20,6 +22,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    
     
     
     respond_to do |format|

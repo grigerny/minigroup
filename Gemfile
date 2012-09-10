@@ -33,6 +33,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'impressionist'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "best_in_place"
+gem "cancan"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

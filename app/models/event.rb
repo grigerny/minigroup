@@ -6,4 +6,8 @@ class Event < ActiveRecord::Base
   
   validates_presence_of :name
   validates_presence_of :tag_list
+  
+   def admin
+         @user = session[:current_user]
+    end
 end
