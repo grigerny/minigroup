@@ -7,10 +7,10 @@
 				<%= event.user.username %> is looking for 
 				<%= event.people %> that want to 
 		<div class="verbforevent">
-				<%= event.verb %>
+				<%= event.verb.downcase %>
 		</div>
 		<div class="nameofevent">
-				<%= link_to event.name + ".", event %>
+				<%= link_to event.name.downcase + ".", event %>
 		</div>
 		<div class="views">
 		&nbsp<%= event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 

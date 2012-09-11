@@ -8,10 +8,10 @@
 				<%= @event.user.username %> is looking for 
 				<%= @event.people %> that want to 
 		<div class="verbforevent">
-				<%= @event.verb %>
+				<%= @event.verb.downcase %>
 		</div>
 		<div class="nameofevent">
-				<%= @event.name + "." %>
+				<%= @event.name.downcase + "." %>
 		</div>
 		<div class="views">
 		&nbsp<%= @event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 
