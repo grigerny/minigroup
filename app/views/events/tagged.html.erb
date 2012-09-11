@@ -1,36 +1,26 @@
-<div class="styleeventsshow">
-	<br><br>
-	<div class="eventsentence">
-	<center>
-		<br>
-		<% @events.reverse.each do |event|%>
-				<%= event.user.username %> is looking for 
-				<%= event.people %> that want to 
-		<div class="verbforevent">
-				<%= event.verb.downcase %>
-		</div>
-		<div class="nameofevent">
-				<%= link_to event.name.downcase + ".", event %>
-		</div>
-		<div class="views">
-		&nbsp<%= event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 
-		</div>
-	</center>	
-	</div>
+<div class="style">
+<div class="mainbody">	
+	<div class="eventsindex">
 
+
+		<% @events.reverse.each do |event|%>
+		<div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
+		<div class="eventsentence"> I am looking for <%= event.people %> that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
+
+		<div class="views">
+		<%= event.impressionist_count(:filter=>:session_hash)%>
+		<i class="icon-eye-open"></i> 
+		</div>
+		<br><br>
+		
 <div class="tags">
 	<% event.tags.each do |tag| %>
-		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
+	<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 	<% end %>
 </div>	
-
-</div>
-<br><br>
-
 <hr>
 <% end %>
-</center>
-</div>
 
-</div>
-</div>
+</div>	
+	</div>
+	</div>
