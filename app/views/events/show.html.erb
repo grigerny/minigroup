@@ -34,20 +34,21 @@
 	<div class="eventsshowleft">
 		More information about this event:
 		<hr>
-		When?
+		Date
+		<div class="bestinplaceeventshow">
 		<% if can? :update, @event %>
 		<%= best_in_place @event, :when, :nil => "click to edit" %>
 		<% end %> 
 		<% if cannot? :update, @event %>
 		<%= @event.when %>
 		<% end %> 
-	
+		</div>
 		<br><br>	
-		Where?
+		Location
 		<br><br>
-		How?
+		Details
 		<div class="showpicborder">
-	<%= image_tag @event.user.avatar.url(:medium) %>
+	<%= image_tag @event.user.avatar.url(:thumb) %>
 		</div>
 	</div>
 	
