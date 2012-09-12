@@ -14,7 +14,6 @@
 .navbar{
 	font-family:Arial;
 	font-size:14px;
-	width:auto;
 	text-align:center;
 
 }
@@ -31,15 +30,3 @@
 	-webkit-box-shadow: inset 0 0 2px#888;
 	box-shadow: inset 0 0 2px #888;
 }	
-.mainbody{	
-	width:auto;
-	height:auto;
-}
-
-.sexy_line { 
-    margin: 15px 0;
-    height: 1px;
-    border: 0;
-    background: black;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
-}​

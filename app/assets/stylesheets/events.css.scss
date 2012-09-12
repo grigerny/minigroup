@@ -30,9 +30,6 @@
 .eventsshow{
 	font-family:Arial-BoldMT;
 	font-size:20px;
-	width:100%;
-	position:absolute;
-	width:auto;
 	color:#46A1D1;
 }
 
@@ -175,7 +172,7 @@
 	
 }
 .style{
-	padding:80px;
+	padding:40px;
 	background-color:ghostwhite;
 	box-shadow: inset 0px 1px 3px #888888;
 }
@@ -237,9 +234,8 @@
 }
 
 .showpicborder{
-	position:absolute;
+	float:right;
 	margin-top:-100px;
-	margin-left: 500px;
 	border: 5px solid #F3F0FB;
 	box-shadow: 1px 0px 3px #888888;
 }
