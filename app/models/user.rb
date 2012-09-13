@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :events, :dependent => :destroy
+  has_many :memberships
+  has_many :events, :through => :memberships
+  has_many :events, :as => :owner, :class_name => "Event", :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

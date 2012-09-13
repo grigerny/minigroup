@@ -22,9 +22,6 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    
-    
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -92,5 +89,19 @@ class EventsController < ApplicationController
         @events = Event.postall
       end  
   end  
+  
+  def join
+      @event = Event.find(params[:id])
+      @membership = @event.memberships.build(:user_id => current_user.id)
+      respond_to do |format|
+        if @membership.save
+          format.html { redirect_to(@event, :notice => 'You have joined this group.') }
+          format.xml  { head :ok }
+        else
+          format.html { redirect_to(@event, :notice => 'Join error.') }
+          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        end
+      end
+    end
   
 end

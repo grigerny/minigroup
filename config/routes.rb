@@ -3,9 +3,15 @@ Minigroup::Application.routes.draw do
   
   resources :users
   
-  resources :events 
+  resources :events do 
+      get 'join', :on => :member
+    end
+  
+  resources :memberships
   
   match 'tagged' => 'events#tagged', :as => 'tagged'
+  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
