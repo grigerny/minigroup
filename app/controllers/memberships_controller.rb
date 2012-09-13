@@ -19,7 +19,6 @@ def destroy
      @membership.destroy
      flash[:notice] = "Removed membership."
          redirect_to :back
-   end
 end
 
 def index
