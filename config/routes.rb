@@ -7,8 +7,8 @@ Minigroup::Application.routes.draw do
       get 'join', :on => :member
     end
   
-  resources :memberships
-  
+  resources :memberships 
+
   match 'tagged' => 'events#tagged', :as => 'tagged'
   
 

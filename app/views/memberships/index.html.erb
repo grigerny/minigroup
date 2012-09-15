@@ -1,0 +1,7 @@
+<br><br><br>
+<% @memberships.each do |membership| %>
+<%= membership.id %>)<br>
+User_id		<%= membership.user_id %><br>
+Event_id			<%= membership.event_id %><br>
+Membership Status 				<%= membership.status %><br><br>
+	<% end %>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :events, :through => :memberships
   has_many :events, :as => :owner, :class_name => "Event", :dependent => :destroy
 
