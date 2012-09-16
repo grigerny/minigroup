@@ -6,7 +6,7 @@
 	<center>
 		<br>
 				<%= @event.user.username %> is looking for 
-				<%= @event.people %> that want to 
+				<%= @event.people %> people that want to 
 		<div class="verbforevent">
 				<%= @event.verb.downcase %>
 		</div>
@@ -19,10 +19,6 @@
 	</center>	
 	</div>	
 
-
-
-
-
 <div class="eventshowbody">	
 
 	<div class="tags2">
@@ -30,11 +26,33 @@
 		<% @event.tags.each do |tag| %>
 		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
 		<% end %>
+	</div>	
+	
+	<div class="numofmembers">
+		<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined, 
+		<%= pluralize(@event.people.to_i - @event.memberships.count.to_i, "spot") %> remaining
 	</div>
+	
+
 		
 	<br>	
-	<div class="eventsshowleft">
+	<div class="eventheaderleft">
 		More information about this event:
+	<div class="eventheaderright">	
+		<% if @event.user_id != current_user.id %>
+		<button class="btn btn-primary">
+		<%= link_to "Join", join_event_path(@event) %>	
+		</button>	
+		<% end %>
+
+		<% @event.memberships.each do |membership| %>
+		<% membership.user_id == current_user.id %>	
+		<button class="btn btn-primary">
+		<%= link_to "unjoin", unjoin_event_path(@event) %>
+		</button>
+		<% end %>
+	</div>	
+		
 		<hr>
 		Date
 		<div class="bestinplaceeventshow">
@@ -48,13 +66,13 @@
 		<br><br>	
 		Location
 		<br><br>
-		<%= @event.memberships.count %> Members:<br>
 		
-		<% @event.memberships.each do |membership| %><br> 
-		<%= membership.user.username	%>
 	
-		<% end %>
-		<%= link_to "Join this group", join_event_path(@event) %>
+		<% @event.memberships.first(@event.people).each do |membership| %><br> 
+		<%= membership.user.username%>
+	
+		<% end %><br>
+		
 		
 		<div class="showpicborder">
 	<%= image_tag @event.user.avatar.url(:thumb) %>

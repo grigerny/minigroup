@@ -4,19 +4,24 @@
 
 <% @events.reverse.each do |event|%>
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
-<div class="eventsentence"> I am looking for <%= event.people %> that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
-
+<div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
 <div class="views">
 <%= event.impressionist_count(:filter=>:session_hash)%>
 <i class="icon-eye-open"></i> 
 </div>
-<br><br>
+<br>
 
+
+
+	<div class="numofpeople2">
+			<%= pluralize(event.people.to_i - event.memberships.count.to_i, "spot") %> remaining
+	</div>
 		<div class="tags">
 			<% event.tags.each do |tag| %>
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
+
 		<hr>
 <% end %>
 

@@ -93,6 +93,7 @@
 	padding-bottom:5px;
 	margin-right:5px;
 	box-shadow: 1px 0px 3px #888888;
+	a:visited {color:#666;}
 }
 
 .nameofevent:hover{
@@ -109,6 +110,8 @@
 	float:right;
 	font-size:14px;
 	color:white;
+	a:link {color:#45A1D1;}
+	a:visited {color:#666;}
 }
 .tags2{
 	font-family:Arial;
@@ -118,6 +121,26 @@
 	font-size:14px;
 	color:white;
 	margin-top:-45px;
+}
+
+.numofmembers{
+	float:left;
+	font-family:Arial;
+	padding-left:2px;
+	padding-right:2px;
+	font-size:14px;
+	color:#666;
+	margin-top:-45px;
+}
+
+.numofpeople2{
+	float:right;
+	font-family:Arial;
+	padding-left:2px;
+	padding-right:2px;
+	font-size:14px;
+	color:#666;
+	background-color:#B3D4FD;
 }
 
 .tageventsentence{
@@ -150,7 +173,7 @@
 
 .newtitle2{
 	text-transform: uppercase;
-	color: #666;
+	link: #666;
 	font-family:Arial-BoldMT;
 	letter-spacing: 3px;
 	font-size:26px;	
@@ -163,6 +186,7 @@
 	padding-top:20px;
 	padding-right:20px;
 	padding-bottom:20px;
+	a:visited {color:#666;}
 }
 
 .addevent{
@@ -199,10 +223,17 @@
 	height:1000px;
 }
 
-.eventsshowleft{
+.eventheaderleft{
 	font-family:Arial;
 	height:300px;
 	color:#666;
+}
+
+.eventheaderright{
+	display:inline;
+	float:right;
+	a:link {color:white;}
+	a:visited {color:white;}
 }
 
 .eventsshowright{

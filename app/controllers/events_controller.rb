@@ -10,8 +10,6 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     
-  
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -93,6 +91,7 @@ class EventsController < ApplicationController
   def join
       @event = Event.find(params[:id])
       @membership = @event.memberships.build(:user_id => current_user.id)
+     
       respond_to do |format|
         if @membership.save
           format.html { redirect_to(@event, :notice => 'You have joined this group.') }
@@ -103,6 +102,19 @@ class EventsController < ApplicationController
         end
       end
     end
-  
-  
+    
+  def unjoin  
+    @event = Event.find(params[:id])
+    @membership = @event.memberships(:user_id => current_user.id)
+    
+     respond_to do |format|
+        if @membership.destroy_all
+          format.html { redirect_to(@event, :notice => 'You have left this group.') }
+          format.xml  { head :ok }
+        else
+          format.html { redirect_to(@event, :notice => 'Join error.') }
+          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        end
+      end
+  end
 end
