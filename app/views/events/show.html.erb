@@ -1,8 +1,19 @@
 
 
 <div class="styleeventsshow">
-	<br><br>
+	<br>
 	<div class="eventsentence">
+		<center>
+		<div class="youhavejoinedthisevent">
+		<% @event.memberships.first(@event.people).each do |membership| %><br> 
+		<% if %>
+		<% membership.user_id == current_user.id %>
+		<%= "You have joined this event." %> 
+		<% end %><br>
+		<% end %>
+		</div>
+		</center>
+		
 	<center>
 		<br>
 				<%= @event.user.username %> is looking for 
@@ -40,17 +51,15 @@
 		More information about this event:
 	<div class="eventheaderright">	
 		<% if @event.user_id != current_user.id %>
-		<button class="btn btn-primary">
-		<%= link_to "Join", join_event_path(@event) %>	
-		</button>	
-		<% end %>
-
-		<% @event.memberships.each do |membership| %>
-		<% membership.user_id == current_user.id %>	
-		<button class="btn btn-primary">
-		<%= link_to "unjoin", unjoin_event_path(@event) %>
+		<button class="btn btn-success">
+		<%= link_to "Join", join_event_path(@event) %> 
+		</button>
+		<button class="btn btn-danger">
+			<%= link_to "Leave", unjoin_event_path(@event) %>	
 		</button>
 		<% end %>
+
+
 	</div>	
 		
 		<hr>
@@ -67,16 +76,15 @@
 		Location
 		<br><br>
 		
-	
-		<% @event.memberships.first(@event.people).each do |membership| %><br> 
-		<%= membership.user.username%>
-	
-		<% end %><br>
-		
-		
-		<div class="showpicborder">
-	<%= image_tag @event.user.avatar.url(:thumb) %>
-		</div>
+		<div class="members">
+		Members:
+		<br>
+			<%= link_to image_tag(@event.user.avatar.url(:thumb)), @event.user %>
+			<% @event.memberships.first(@event.people).each do |membership| %><br> 
+			<%= link_to image_tag(membership.user.avatar.url(:thumb)), membership.user %>
+			<% end %>
+		</div>	
+
 	</div>
 	
 

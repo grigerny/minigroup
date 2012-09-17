@@ -94,10 +94,10 @@ class EventsController < ApplicationController
      
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to(@event, :notice => 'You have joined this group.') }
+          format.html { redirect_to(@event, :notice => 'You have joined this event.') }
           format.xml  { head :ok }
         else
-          format.html { redirect_to(@event, :notice => 'Join error.') }
+          format.html { redirect_to(@event, :notice => 'You have already joined this event.') }
           format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
         end
       end
@@ -105,16 +105,9 @@ class EventsController < ApplicationController
     
   def unjoin  
     @event = Event.find(params[:id])
-    @membership = @event.memberships(:user_id => current_user.id)
+    @membership = @event.memberships.find_by_user_id(current_user.id)
+    @membership.destroy rescue nil
+    redirect_to(@event, :notice => 'You have left this event.')
     
-     respond_to do |format|
-        if @membership.destroy_all
-          format.html { redirect_to(@event, :notice => 'You have left this group.') }
-          format.xml  { head :ok }
-        else
-          format.html { redirect_to(@event, :notice => 'Join error.') }
-          format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-        end
-      end
   end
 end
