@@ -67,6 +67,7 @@ GEM
     excon (0.15.5)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    geocoder (1.1.2)
     heroku (2.30.2)
       heroku-api (~> 0.3.2)
       launchy (>= 0.3.2)
@@ -171,6 +172,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   devise
+  geocoder
   heroku (~> 2.30.2)
   impressionist
   jquery-rails
