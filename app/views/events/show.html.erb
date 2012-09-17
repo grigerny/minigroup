@@ -72,9 +72,21 @@
 		<%= @event.when %>
 		<% end %> 
 		</div>
-		<br><br>	
-		Location
 		<br><br>
+			
+		Location: 
+		<div class="bestinplaceeventshow">
+			<% if can? :update, @event %>
+			<%= best_in_place @event, :location, :nil => "click to edit location"%>
+			<% end %>
+			<% if cannot? :update, @event %>
+			<%= @event.location %> 
+			<% end %>
+		</div>	
+		<br><br>
+			
+				<%= @event.location %> is <%= @event.distance_to("Paris, France") %> miles away from Paris, France
+
 		
 		<div class="members">
 		Members:
