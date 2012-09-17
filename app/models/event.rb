@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
   belongs_to :user, foreign_key: 'user_id'
 
