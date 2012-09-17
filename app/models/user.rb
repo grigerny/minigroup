@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :events, :through => :memberships
   has_many :events, :as => :owner, :class_name => "Event"
+  has_many :comments, :dependent => :destroy
   
   geocoded_by :last_sign_in_ip
   after_validation :geocode

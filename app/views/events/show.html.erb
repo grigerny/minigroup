@@ -84,9 +84,6 @@
 			<% end %>
 		</div>	
 		<br><br>
-			
-				<%= @event.location %> is <%= @event.distance_to("Paris, France") %> miles away from Paris, France
-
 		
 		<div class="members">
 		Members:
@@ -98,6 +95,21 @@
 		</div>	
 
 	</div>
+	
+	<% @event.comments.reverse.each do |comment| %>
+	<b>
+	<%= comment.user.username %>:
+	</b>
+	<%= comment.body %>
+	<br><br>
+	<% end %>
+	
+	<%= form_for ([@event, @event.comments.build]) do |f| %>
+	<%= f.text_area :body, :placeholder => "Comment...", :rows => 5, :style => "width:100%" %>
+  		<div class="right">
+	<%= f.button :'Add Comment', :class => 'btn' %>	
+  		</div>  
+	<% end %>
 	
 
 	<div class="eventsshowright">

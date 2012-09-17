@@ -5,6 +5,7 @@ Minigroup::Application.routes.draw do
   
   resources :events do 
       get 'join', 'unjoin', :on => :member
+  resources :comments    
     end
   
   resources :memberships 

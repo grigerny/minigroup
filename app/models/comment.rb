@@ -1,3 +1,6 @@
 class Comment < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :user
+  belongs_to :event
+  
+  attr_accessible :name, :body, :user_id, :event_id
 end
