@@ -14,7 +14,7 @@
 
 
 	<div class="numofpeople2">
-			<%= pluralize(event.memberships.first(event.people).count, "member") %> joined, 
+		
 			<%= pluralize(event.people.to_i - event.memberships.count.to_i, "spot") %> remaining
 	</div>
 		<div class="tags">
