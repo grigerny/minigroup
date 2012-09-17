@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :avatar, :last_sign_in_ip
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :avatar, :last_sign_in_ip, :latitude, :longitude
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }
   
   validates_presence_of :username
