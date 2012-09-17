@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :avatar
   # attr_accessible :title, :body
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }
+  geocoded_by :current_sign_in_ip
+  after_validation :geocode
   
   validates_presence_of :username
 end
