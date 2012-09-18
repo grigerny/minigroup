@@ -1,19 +1,16 @@
-
-
 <div class="styleeventsshow">
 	<br>
-	<div class="eventsentence">
-		<center>
 		<div class="youhavejoinedthisevent">
 		<% @event.memberships.first(@event.people).each do |membership| %><br> 
 		<% if %>
 		<% membership.user_id == current_user.id %>
-		<%= "You have joined this event." %> 
+		<i class="icon-ok-circle"></i>
 		<% end %><br>
 		<% end %>
 		</div>
-		</center>
 		
+	<div class="eventsentence">
+
 	<center>
 		<br>
 				<%= @event.user.username %> is looking for 
@@ -38,17 +35,11 @@
 		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
 		<% end %>
 	</div>	
-	
-	<div class="numofmembers">
-		<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined, 
-		<%= pluralize(@event.people.to_i - @event.memberships.count.to_i, "spot") %> remaining
-	</div>
-	
-
 		
 	<br>	
 	<div class="eventheaderleft">
-		More information about this event:
+			<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined, 
+			<%= pluralize(@event.people.to_i - @event.memberships.count.to_i, "spot") %> remaining
 	<div class="eventheaderright">	
 		<% if @event.user_id != current_user.id %>
 		<button class="btn btn-success">
@@ -58,7 +49,6 @@
 			<%= link_to "Leave", unjoin_event_path(@event) %>	
 		</button>
 		<% end %>
-
 
 	</div>	
 		
@@ -86,39 +76,45 @@
 		<br><br>
 		
 		<div class="members">
-		Members:
-		<br>
 			<%= link_to image_tag(@event.user.avatar.url(:thumb)), @event.user %>
-			<% @event.memberships.first(@event.people).each do |membership| %><br> 
+			<br><br>
+			
+			<% if @event.memberships.count > 0 %> 
+			<div class="iconplus">
+			<center>
+			<i class="icon-plus"></i>
+			</center>
+			</div>
+			<% end %>
+			
+			<% @event.memberships.first(@event.people).each do |membership| %>
+			<br>
 			<%= link_to image_tag(membership.user.avatar.url(:thumb)), membership.user %>
 			<% end %>
 		</div>	
 
 	</div>
-	
+
+<div class="commentsection">
 	<% @event.comments.reverse.each do |comment| %>
-	<b>
+	<div class="commentsusername">
 	<%= comment.user.username %>:
-	</b>
+	</div>
+	<div class="commentsbody">
 	<%= comment.body %>
-	<br><br>
+	</div>
+	<br>
+	<br>
 	<% end %>
-	
+</div>	
+
 	<%= form_for ([@event, @event.comments.build]) do |f| %>
-	<%= f.text_area :body, :placeholder => "Comment...", :rows => 5, :style => "width:100%" %>
+	<%= f.text_area :body, :placeholder => "Add comment..", :rows => 5, :style => "width:80%" %>
   		<div class="right">
 	<%= f.button :'Add Comment', :class => 'btn' %>	
   		</div>  
 	<% end %>
 	
-
-	<div class="eventsshowright">
-	
-	</div>
-		
-	<div class="eventsshowright2">	
-		
-	</div>
 
 </div>
 
