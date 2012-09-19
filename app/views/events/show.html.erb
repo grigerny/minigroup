@@ -56,15 +56,17 @@
 		Date:
 		<div class="bestinplaceeventshow">
 		<% if can? :update, @event %>
-		<%= best_in_place @event, :when, :nil => "click to edit" %>
+		<%= best_in_place @event, :when,:type => :date, :nil => "edit date" %>
 		<% end %> 
 		<% if cannot? :update, @event %>
 		<%= @event.when %>
 		<% end %> 
 		</div>
 		<br><br>
+
 	
-			
+
+
 		Location: 
 		<div class="bestinplaceeventshow">
 			<% if can? :update, @event %>
@@ -116,6 +118,7 @@
   		</div>  
 	<% end %>
 	
+
 
 </div>
 

@@ -3,4 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $('.best_in_place').best_in_place();
-  $("#datepicker").datepicker();
+  $('.datepicker').datepicker();
+$.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
+
