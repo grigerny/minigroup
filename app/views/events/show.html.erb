@@ -59,7 +59,7 @@
 		<%= best_in_place @event, :when, :type => :date, :nil => "edit date" %>
 		<% end %> 
 		<% if cannot? :update, @event %>
-		<%= @event.when.strftime('%B %e, %Y ') %>
+		<%= @event.when.strftime('%B %e, %Y') rescue nil %>
 		<% end %> 
 		</div>
 		<br><br>
