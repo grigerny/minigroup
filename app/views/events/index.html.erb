@@ -1,6 +1,7 @@
 	<div class="style">
 	<div class="mainbody">	
 		<div class="eventsindex">
+			
 
 <% @events.reverse.each do |event|%>
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>

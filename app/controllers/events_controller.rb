@@ -9,7 +9,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-    
+  
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -20,6 +22,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+      @user = current_user
+      @user.ip_address = request.ip
+      @user.save
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
