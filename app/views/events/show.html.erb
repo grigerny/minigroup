@@ -14,7 +14,7 @@
 	<center>
 		<br>
 				<%= @event.user.username %> is looking for 
-				<%= @event.people %> people that want to 
+				<%= @event.people %> people that want to
 		<div class="verbforevent">
 				<%= @event.verb.downcase %>
 		</div>
@@ -56,14 +56,13 @@
 		Date:
 		<div class="bestinplaceeventshow">
 		<% if can? :update, @event %>
-		<%= best_in_place @event, :when,:type => :date, :nil => "edit date" %>
+		<%= best_in_place @event, :when, :type => :date, :nil => "edit date" %>
 		<% end %> 
 		<% if cannot? :update, @event %>
-		<%= @event.when %>
+		<%= @event.when.strftime('%B %e, %Y ') %>
 		<% end %> 
 		</div>
 		<br><br>
-
 	
 
 

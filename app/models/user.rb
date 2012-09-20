@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   has_many :events, :as => :owner, :class_name => "Event"
   has_many :comments, :dependent => :destroy
   
-  geocoded_by :last_sign_in_ip
-  after_validation :geocode
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -16,6 +15,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :avatar, :last_sign_in_ip, :latitude, :longitude
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }
+  
+  attr_accessor :ip_address
+  
+  geocoded_by :ip_address
+  after_validation :geocode
   
   validates_presence_of :username
   
