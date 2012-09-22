@@ -271,10 +271,8 @@
 
 .bestinplaceeventshow{
 	display: inline;
-	font-size: 70%;
-	color: #fff;
-	background-color:#A1C5FC;
-	
+	font-size: 14px;
+	color: #45A1D1;	
 }
 .indexpicborder:hover{
 	display:inline;
@@ -291,4 +289,18 @@
 	margin-top:-100px;
 	border: 5px solid #F3F0FB;
 	box-shadow: 1px 0px 3px #888888;
+}
+
+.eventdate{
+	color:#666;
+	font-family:Arial;
+	font-size:14px;
+	display:inline;
+}
+
+.eventlocation{
+	color:#666;
+	font-family:Arial;
+	font-size:14px;
+	display:inline;
 }

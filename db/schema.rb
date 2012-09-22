@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918014125) do
+ActiveRecord::Schema.define(:version => 20120922165135) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20120918014125) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.string   "verb"
     t.integer  "views"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120918014125) do
     t.float    "longitude"
     t.string   "location"
     t.date     "when"
+    t.text     "description"
   end
 
   create_table "impressions", :force => true do |t|

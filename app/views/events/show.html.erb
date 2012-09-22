@@ -53,10 +53,12 @@
 	</div>	
 		
 		<hr>
+		<div class="eventdate">
 		Date:
+		</div>
 		<div class="bestinplaceeventshow">
 		<% if can? :update, @event %>
-		<%= best_in_place @event, :when, :type => :date, :nil => "edit date" %>
+		<%= best_in_place @event, :when, :type => :date, :nil => "click here to edit" %> <i class="icon-edit"></i>
 		<% end %> 
 		<% if cannot? :update, @event %>
 		<%= @event.when.strftime('%B %e, %Y') rescue nil %>
@@ -65,11 +67,12 @@
 		<br><br>
 	
 
-
+		<div class="eventlocation">
 		Location: 
+		</div>
 		<div class="bestinplaceeventshow">
 			<% if can? :update, @event %>
-			<%= best_in_place @event, :location, :nil => "click to edit location"%>
+			<%= best_in_place @event, :location, :nil => "click here to edit" %> <i class="icon-edit"></i>
 			<% end %>
 			<% if cannot? :update, @event %>
 			<%= @event.location %> 
@@ -96,18 +99,17 @@
 		</div>	
 
 	</div>
-	
-	
-	about <%= current_user.distance_to(["#{@event.latitude}","#{@event.longitude}"]) %> miles away
 
 <div class="commentsection">
 	<% @event.comments.reverse.each do |comment| %>
 	<div class="commentsusername">
+	<%= link_to image_tag(comment.user.avatar.url(:thumb)), comment.user %>
 	<%= comment.user.username %>:
 	</div>
 	<div class="commentsbody">
 	<%= comment.body %>
 	</div>
+	<hr>
 	<br>
 	<br>
 	<% end %>

@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :user, foreign_key: 'user_id'
   has_many :comments
 
-  attr_accessible :name, :user_id, :people, :views, :verb, :when, :tag_list, :location
+  attr_accessible :name, :user_id, :people, :views, :verb, :when, :tag_list, :location, :description
   is_impressionable
   acts_as_taggable
   geocoded_by :location
