@@ -154,19 +154,32 @@
 
 .youhavejoinedthisevent{
 	color:green;
-	font-size:40px;	
 	float:right;
 	margin-top:-40px;
+	font-size:16px;
 }
 
 .icon-plus{
-	color:green;
+	font-size:16px;
+	color:#45A1D1;
 	
 }
 
-.members{
+.youownthisevent{
 	float:right;
-	margin-top:-80px;
+	margin-top:-30px;
+}
+
+.icon-pencil{
+	color:green;
+	font-size:16px;
+}
+
+.members{
+	position:absolute;
+	float:right;
+	margin-top:-110px;
+	margin-left:660px;
 }
 
 .newtitle{
@@ -299,6 +312,13 @@
 }
 
 .eventlocation{
+	color:#666;
+	font-family:Arial;
+	font-size:14px;
+	display:inline;
+}
+
+.eventdescription{
 	color:#666;
 	font-family:Arial;
 	font-size:14px;

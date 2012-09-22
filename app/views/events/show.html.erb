@@ -4,10 +4,16 @@
 		<% @event.memberships.first(@event.people).each do |membership| %><br> 
 		<% if %>
 		<% membership.user_id == current_user.id %>
-		<i class="icon-ok-circle"></i>
+		<i class="icon-ok-circle"> joined event</i>
 		<% end %><br>
 		<% end %>
 		</div>
+		
+		<div class="youownthisevent">
+			<% if @event.user.id == current_user.id %>
+			<i class="icon-pencil"> your event</i>
+			<% end %>
+		</div>	
 		
 	<div class="eventsentence">
 
@@ -38,7 +44,7 @@
 		
 	<br>	
 	<div class="eventheaderleft">
-			<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined, 
+			<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined 
 			<%= pluralize(@event.people.to_i - @event.memberships.count.to_i, "spot") %> remaining
 	<div class="eventheaderright">	
 		<% if @event.user_id != current_user.id %>
@@ -79,6 +85,19 @@
 			<% end %>
 		</div>	
 		<br><br>
+		
+			<div class="eventdescription">
+			Description: 
+			</div>
+			<div class="bestinplaceeventshow">
+				<% if can? :update, @event %>
+				<%= best_in_place @event, :description, :type => :textarea, :nil => "click here to edit" %> <i class="icon-edit"></i>
+				<% end %>
+				<% if cannot? :update, @event %>
+				<%= @event.description %> 
+				<% end %>
+			</div>	
+			<br><br>
 		
 		<div class="members">
 			<%= link_to image_tag(@event.user.avatar.url(:thumb)), @event.user %>

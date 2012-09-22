@@ -9,9 +9,6 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
-  
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -35,8 +32,6 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-   
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -69,8 +64,10 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-    @event.update_attributes(params[:event])
+    if @event.update_attributes(params[:event])
+    flash[:notice] = 'Text was successfully updated.'
     respond_with @event
+  end
   end
 
   # DELETE /events/1
