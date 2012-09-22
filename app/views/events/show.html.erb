@@ -91,7 +91,7 @@
 			</div>
 			<div class="bestinplaceeventshow">
 				<% if can? :update, @event %>
-				<%= best_in_place @event, :description, :type => :textarea, :nil => "click here to edit", :ok_button => 'Save' %> <i class="icon-edit"></i>
+				<%= best_in_place @event, :description, :type => :textarea, :nil => "click here to edit" %> <i class="icon-edit"></i>
 				<% end %>
 				<% if cannot? :update, @event %>
 				<%= @event.description %> 
