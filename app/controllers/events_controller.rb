@@ -65,7 +65,6 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-    flash[:notice] = 'Text was successfully updated.'
     respond_with @event
   end
   end
