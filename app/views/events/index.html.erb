@@ -1,15 +1,19 @@
 	<div class="style">
 	<div class="mainbody">	
 		
+		<form class="form-search">
 		<%= search_form_for @search do |f| %>
-		<%= f.label :name_cont, "Name contains" %>
-		<%= f.text_field :name_cont %>
-		<%= f.submit "Search" %>
+		<%= f.text_field :name_cont,:style => "width:90%" %>
+		<button type="submit" class="btn">Search</button>
 		<% end %>
+		</form>
 		
+		<div class="eventdatesort">
+		Sort by: <%= sort_link @search, :when, "Event Date" %>
+		</div>
+
 		<div class="eventsindex">
 			
-
 <% @events.reverse.each do |event|%>
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
 <div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
@@ -17,23 +21,22 @@
 <%= event.impressionist_count(:filter=>:session_hash)%>
 <i class="icon-eye-open"></i> 
 </div>
-<br>
-
-
-
-	<div class="numofpeople2">
-		
-			<%= pluralize(event.people.to_i - event.memberships.count.to_i, "spot") %> remaining
+	<div class="indexwhen">
+		<i class="icon-calendar"></i>
+		<%= event.when.strftime("%B #{event.when.day.ordinalize}, %Y") %>
 	</div>
+	
 		<div class="tags">
+			<i class="icon-tags"></i>
 			<% event.tags.each do |tag| %>
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
+<br><br>
 
 		<hr>
 <% end %>
 
 		</div>
 	</div>
-</div>
+	</div>
