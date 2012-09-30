@@ -60,11 +60,11 @@
 		
 		<hr>
 		<div class="eventdate">
-		Date:
+		<i class="icon-calendar"></i>
 		</div>
 		<div class="bestinplaceeventshow">
 		<% if can? :update, @event %>
-		<%= best_in_place @event, :when, :type => :date, :nil => "click here to edit" %> <i class="icon-edit"></i>
+		<%= best_in_place @event, :when, :type => :date, :nil => "Edit Date" %> <i class="icon-edit"></i>
 		<% end %> 
 		<% if cannot? :update, @event %>
 		<%= @event.when.strftime('%B %e, %Y') rescue nil %>
@@ -74,30 +74,37 @@
 	
 
 		<div class="eventlocation">
-		Location: 
+		<i class="icon-map-marker"></i>
 		</div>
 		<div class="bestinplaceeventshow">
 			<% if can? :update, @event %>
-			<%= best_in_place @event, :location, :nil => "click here to edit" %> <i class="icon-edit"></i>
+			<%= best_in_place @event, :location, :nil => "Add Location" %> <i class="icon-edit"></i>
 			<% end %>
 			<% if cannot? :update, @event %>
 			<%= @event.location %> 
 			<% end %>
+			<div class="milesaway">
+			(<%= pluralize(@event.distance_from([current_user.latitude,current_user.longitude]).round(0),"mile")%> away)
+			</div>
 		</div>	
 		<br><br>
 		
 			<div class="eventdescription">
-			Description: 
+			<i class="icon-align-left"></i>
 			</div>
 			<div class="bestinplaceeventshow">
 				<% if can? :update, @event %>
-				<%= best_in_place @event, :description, :type => :textarea, :nil => "click here to edit" %> <i class="icon-edit"></i>
+				<%= best_in_place @event, :description, :type => :textarea, :nil => "Add Description" %> <i class="icon-edit"></i>
 				<% end %>
 				<% if cannot? :update, @event %>
 				<%= @event.description %> 
 				<% end %>
 			</div>	
 			<br><br>
+			
+
+			
+
 			
 		<div class="members">
 			<%= link_to image_tag(@event.user.avatar.url(:thumb)), @event.user %>
