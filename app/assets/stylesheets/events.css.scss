@@ -22,8 +22,13 @@
 	font-size:20px;	
 }
 
+.searchindex{
+	display:inline;
+}
+
 .eventdatesort{
-	margin-left:720px;
+	margin-left:0px;
+	margin-bottom:20px;
 }
 
 .views{
@@ -292,6 +297,7 @@
 }
 
 .bestinplaceeventshow{
+	width:50px;
 	display: inline;
 	font-size: 14px;
 	color: #45A1D1;	
@@ -328,10 +334,10 @@
 }
 
 .eventdescription{
+	display:inline;
 	color:#666;
 	font-family:Arial;
 	font-size:14px;
-	display:inline;
 }
 
 .milesaway{
@@ -339,4 +345,30 @@
 	font-size:12px;
 	color:#666;
 	font-style:italic;
+}
+
+.eventnewribbon{
+	float:left;
+	position:relative;
+	margin-right:5px;
+	padding:2px;
+	top:-120px;
+	left:135px;
+	width:30px;
+	background-color:green;
+	font-size:14px;
+	color:white;
+	font-weight:regular;
+}
+.eventfullribbon{
+	float:left;
+	position:relative;
+	padding:2px;
+	top:-120px;
+	left:135px;
+	width:105px;
+	background-color:#FF5200;
+	font-size:14px;
+	color:white;
+	font-weight:regular;
 }

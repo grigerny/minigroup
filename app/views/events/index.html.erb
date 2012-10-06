@@ -1,35 +1,52 @@
 	<div class="style">
 	<div class="mainbody">	
 		
+		<div class="searchindex">
 		<form class="form-search">
 		<%= search_form_for @search do |f| %>
-		<%= f.text_field :name_cont,:style => "width:90%" %>
+		<%= f.text_field :name_cont,:style => "width:60%",:placeholder => "Search For Events" %>
 		<button type="submit" class="btn">Search</button>
+	
+		<%= form_tag events_path, :method => :get do %>
+		<%= text_field_tag :search, params[:search],:style => "width:20%",:placeholder => "Brooklyn, NY or 11223" %>
+		<button type="submit" class="btn">Near you</button>
 		<% end %>
+			<% end %>
 		</form>
+		</div>
 		
 		<div class="eventdatesort">
-		Sort by: <%= sort_link @search, :when, "Event Date" %>
+		Sort by: <%= sort_link @search, :created_at, "Date Added"%>
 		</div>
 
 		<div class="eventsindex">
 			
-<% @events.reverse.each do |event|%>
+<% @events.order('created_at DESC').each do |event|%>
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
 <div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
 <div class="views">
 <%= event.impressionist_count(:filter=>:session_hash)%>
 <i class="icon-eye-open"></i> 
-</div>
-
-	
+</div>	
 		<div class="tags">
 			<i class="icon-tags"></i>
 			<% event.tags.each do |tag| %>
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
-<br><br>
+		<br><br>
+		
+		<% if event.created_at >= 1.day.ago %>
+		<div class="eventnewribbon">
+			<%= "New"%>
+		</div>
+		<% end %>
+		
+		<% if event.people == event.memberships.count %>
+		<div class="eventfullribbon">
+		<%= "This event is full" %>
+		</div>
+		<% end %>
 
 		<hr>
 <% end %>

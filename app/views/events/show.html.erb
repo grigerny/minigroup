@@ -84,26 +84,30 @@
 			<%= @event.location %> 
 			<% end %>
 			<div class="milesaway">
-			(<%= pluralize(@event.distance_from([current_user.latitude,current_user.longitude]).round(0),"mile")%> away)
+			<% if %>
+			<% @event.distance_from([current_user.latitude,current_user.longitude]) == nil %>
+				<%= "no location to calculate distance" %>
+				<% else %>
+			(<%= pluralize(@event.distance_from([current_user.latitude,current_user.longitude]).round(0),"mile") %> away)
+				<% end %>
+			
 			</div>
 		</div>	
 		<br><br>
 		
-			<div class="eventdescription">
+			
 			<i class="icon-align-left"></i>
-			</div>
 			<div class="bestinplaceeventshow">
 				<% if can? :update, @event %>
 				<%= best_in_place @event, :description, :type => :textarea, :nil => "Add Description" %> <i class="icon-edit"></i>
 				<% end %>
 				<% if cannot? :update, @event %>
+				<div class="eventdescription">
 				<%= @event.description %> 
+				</div>	
 				<% end %>
-			</div>	
+			</div>
 			<br><br>
-			
-
-			
 
 			
 		<div class="members">

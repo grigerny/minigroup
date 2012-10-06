@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :avatar, :last_sign_in_ip, :latitude, :longitude, :ip_address
-  has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }
+  has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100!" },
+                                  :convert_options => {:thumb => "-gravity center -extent 100x100"}
+                              
   
   geocoded_by :ip_address
   after_validation :geocode

@@ -10,6 +10,12 @@ class EventsController < ApplicationController
   def index
     @search = Event.search(params[:q])
     @events = @search.result
+    
+    
+    if params[:search].present?
+       @events = Event.near(params[:search], 15, :order => :distance) 
+     end
+     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
