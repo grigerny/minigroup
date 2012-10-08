@@ -12,9 +12,9 @@
 	<div class="navbar">
 		<div class="navmenu">
 			<%= link_to 'Home', root_path %> |
-			<%= link_to 'New event', new_event_path %> |
+			<%= link_to 'Spark Something', new_event_path %> |
 		<% if user_signed_in? %>
-		  Logged in as <strong><%= current_user.username %></strong>
+		 <i class="icon-user"></i> <strong><%= current_user.username %></strong>
 		  <%= link_to 'Profile', edit_user_registration_path %> |
 		  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		<% else %>

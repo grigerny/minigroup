@@ -1,10 +1,16 @@
-<div class="usersindex">
-<div class="span9">	
-Name: <%= @user.username %>
-<br><br>
-Email: <%= @user.email %>
+<div class="style">
 
-</div>
+<%= image_tag(@user.avatar.url(:thumb))%>
+
+Name: <%= @user.username %>
+<br>
+Email: <%= @user.email %>
+<br><br>
+My Events:
+			<% Event.where(:user_id => @user).each do |e| %>
+			<%= e.name %>
+			<% end %>
+			<br><br>		
 </div>
 
 

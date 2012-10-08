@@ -1,19 +1,20 @@
 <div class="styleeventsshow">
 	<br>
-		<div class="youhavejoinedthisevent">
-		<% @event.memberships.first(@event.people).each do |membership| %><br> 
-		<% if %>
-		<% membership.user_id == current_user.id %>
-		<i class="icon-ok-circle"> joined event</i>
-		<% end %><br>
-		<% end %>
-		</div>
 		
-		<div class="youownthisevent">
+		<% @event.memberships.first(@event.people).each do |membership| %><br> 
+		<% if membership.user_id == current_user.id %>
+		<div class="youhavejoinedthisevent">
+		joined event
+		</div>
+		<% end %>
+		<% end %>
+
 			<% if @event.user.id == current_user.id %>
-			<i class="icon-pencil"> your event</i>
+			<div class="yourevent">
+			your event
+			</div>
 			<% end %>
-		</div>	
+
 		
 	<div class="eventsentence">
 
@@ -44,6 +45,7 @@
 		
 	<br>	
 	<div class="eventheaderleft">
+	
 			<%= pluralize(@event.memberships.first(@event.people).count, "member") %> joined 
 			<%= pluralize(@event.people.to_i - @event.memberships.count.to_i, "spot") %> remaining
 	<div class="eventheaderright">	
@@ -67,8 +69,14 @@
 		<%= best_in_place @event, :when, :type => :date, :nil => "Edit Date" %> <i class="icon-edit"></i>
 		<% end %> 
 		<% if cannot? :update, @event %>
-		<%= @event.when.strftime('%B %e, %Y') rescue nil %>
-		<% end %> 
+
+		<% if @event.when == nil %>
+		<%= "No set date"%>
+		<% else %>
+		<%= @event.when %>
+		<% end %>
+		<% end %>
+
 		</div>
 		<br><br>
 	
@@ -95,8 +103,8 @@
 		</div>	
 		<br><br>
 		
-			
-			<i class="icon-align-left"></i>
+			<div class="descriptionsection">
+			<i class="icon-pencil"></i>
 			<div class="bestinplaceeventshow">
 				<% if can? :update, @event %>
 				<%= best_in_place @event, :description, :type => :textarea, :nil => "Add Description" %> <i class="icon-edit"></i>
@@ -106,6 +114,7 @@
 				<%= @event.description %> 
 				</div>	
 				<% end %>
+			</div>
 			</div>
 			<br><br>
 
@@ -127,8 +136,12 @@
 			<%= link_to image_tag(membership.user.avatar.url(:thumb)), membership.user %>
 			<% end %>
 		</div>	
-
 	</div>
+	
+
+<div class="commentsectionheading">
+Comments:
+</div>
 
 <div class="commentsection">
 	<% @event.comments.reverse.each do |comment| %>
@@ -152,8 +165,6 @@
   		</div>  
 	<% end %>
 	
-
-
 </div>
 
 </div>
