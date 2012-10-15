@@ -42,7 +42,7 @@
 		</div>
 		<% end %>
 		
-		<% if event.people == event.memberships.count %>
+		<% if event.memberships.count > event.people %>
 		<div class="eventfullribbon">
 		<%= "This event is full" %>
 		</div>

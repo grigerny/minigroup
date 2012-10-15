@@ -100,13 +100,13 @@ class EventsController < ApplicationController
   def join
       @event = Event.find(params[:id])
       @membership = @event.memberships.build(:user_id => current_user.id)
-     
+      
       respond_to do |format|
         if @membership.save
           format.html { redirect_to(@event, :notice => 'You have joined this event.') }
           format.xml  { head :ok }
         else
-          format.html { redirect_to(@event, :notice => 'You have already joined this event.') }
+          format.html { redirect_to(@event, :notice => 'You have already joined this event') }
           format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
         end
       end
@@ -117,6 +117,6 @@ class EventsController < ApplicationController
     @membership = @event.memberships.find_by_user_id(current_user.id)
     @membership.destroy rescue nil
     redirect_to(@event, :notice => 'You have left this event.')
-    
   end
+  
 end

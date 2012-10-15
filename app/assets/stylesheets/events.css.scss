@@ -49,10 +49,21 @@
 
 .eventsentence{
 	display:inline;
+	position:relative;
 	font-family:Arial;
 	color:#666;
 	padding-left:10px;
 	padding-top:5px;
+	padding-bottom:5px;
+	margin-right:5px;
+}
+
+.eventsentence2{
+	position:relative;
+	font-family:Arial;
+	color:#666;
+	padding-left:10px;
+	padding-top:20px;
 	padding-bottom:5px;
 	margin-right:5px;
 }
@@ -166,17 +177,6 @@
 	margin-right:5px;
 }
 
-.youhavejoinedthisevent{
-	font-family:Arial;
-	position:absolute;
-	top:108px;
-	left:850px;
-	padding:2px;
-	height:20px;
-	background-color:green;
-	color:white;
-}
-
 .icon-plus{
 	font-size:16px;
 	color:#45A1D1;
@@ -195,9 +195,9 @@
 
 .members{
 	position:absolute;
-	float:right;
-	margin-top:-110px;
-	margin-left:660px;
+	left:920px;
+	top:240px;
+
 }
 
 .newtitle{
@@ -265,28 +265,45 @@
 	
 }
 
-.eventshowbody{
+.eventshowbodyleft{
+	position:relative;
 	background-color:white;
 	font-family:Arial-BoldMT;
 	color:#46A1D1;
 	box-shadow: inset 0px 0px 3px #888888;
 	border:5px solid #F3F0FB;
 	padding:20px;
-	margin-top:50px;
-	margin-left:50px;
-	margin-right:50px;
-	height:1000px;
+	top:20px;
+	left:20px;
+	height:auto;
+	width:90%;
 }
+
+.eventshowbodymembers{
+	position:relative;
+	background-color:white;
+	font-family:Arial-BoldMT;
+	color:#46A1D1;
+	box-shadow: inset 0px 0px 3px #888888;
+	border:5px solid #F3F0FB;
+	padding:40px;
+	top:-430px;
+	left:730px;
+	height:1000px;
+	width:10%;
+}
+
 
 .eventheaderleft{
 	font-family:Arial;
-	height:300px;
 	color:#666;
 }
 
 .eventheaderright{
-	display:inline;
+	bottom:20px;
 	float:right;
+	display:inline;
+	position:relative;
 	a:link {color:white;}
 	a:visited {color:white;}
 }
@@ -294,6 +311,7 @@
 .eventsshowright{
 	background-color:#fff;
 	height:200px;
+
 }
 .eventsshowright2{
 	background-color:#EEEEEE;
@@ -313,6 +331,26 @@
 	width:50px;
 	display: inline;
 	font-size: 12px;
+	font-family:Arial;
+	color:#666;
+		
+}
+
+.bestinplaceeventshowdate{
+	width:50px;
+	display: inline;
+	font-size: 12px;
+	font-family:Arial;
+	color:#666;
+		
+}
+
+.bestinplaceeventshowlocation{
+	width:50px;
+	display: inline;
+	font-size: 12px;
+	font-family:Arial;
+	color:#666;
 		
 }
 .indexpicborder:hover{
@@ -339,11 +377,26 @@
 	display:inline;
 }
 
-.eventlocation{
+.eventlocationicon{
 	color:#45A1D1;
 	font-family:Arial;
 	font-size:14px;
 	display:inline;
+}
+
+.eventmembersicon{
+	color:#45A1D1;
+	font-family:Arial;
+	font-size:14px;
+	display:inline;	
+}
+
+.eventmembersicon2{
+	color:#666;
+	margin-left:-9px;
+	font-family:Arial;
+	font-size:14px;
+	display:inline;	
 }
 
 .eventdescription{
@@ -386,9 +439,21 @@
 	font-family:Arial;
 }
 
+.eventfullribbon2{
+	z-index:100;
+	position:relative;
+	top:138px;
+	padding:1px;
+	left:170px;
+	width:90px;
+	background-color:#FF5200;
+	font-size:12px;
+	color:white;
+	font-family:Arial;
+}
+
 .descriptionsection{
-	position:absolute;
-	margin-right:420px;
+	position:relative;
 }
 
 .commentsectionheading{
@@ -398,13 +463,21 @@
 	font-weight:normal;
 }
 
-.yourevent{
-	position: absolute;
-	top:108px;
-	left:860px;
+
+.neweventformbutton{
+	position:relative;
+	left:260px;
+	bottom:37px;
+}
+
+.eventnotice{
+	position:relative;
+	font-family:Arial;
+	margin-bottom:-20px;
 	padding:2px;
 	height:20px;
-	background-color:green;
+	background-color:#45A1D1;
 	color:white;
-	font-family:Arial;
+	text-align: center
 }
+

@@ -14,21 +14,27 @@
 
 
 <div class="style2">
+	<div class="addevent">
+		<b>
+		Spark something by following 3 easy steps:
+		</b>
+<br><br><br>	
 	
-<div class="addevent">
-	Step 1. What do you want to do?	 <br><br> 
-		<%= f.select 'verb', ['Create', 'Discuss', 'Go', 'Invent', 'Just', 'Launch', 'Meet', 'Play', 'Start', 'Study'] %> 
+
+	What do you want to do?	 <br><br> 
+		<%= f.select 'verb', ['Create', 'Discuss', 'Go', 'Invent', 'Just', 'Launch', 'Meet', 'Play', 'Start', 'Study'],{}, :class => "span2" %> 
 		<%= f.text_field :name, :placeholder => 'something amazing'  %> 
 <br>
-	Step 2. How many people would you like to invite? <br><br>
-		<%= f.select 'people', [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] %> 
+	How many people would you like to invite? 
+		&nbsp<%= f.select 'people', [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], {}, :class => "span1" %> 
 
-<br>	
-	Step 3. Add tags that describe your Spark:<br><br>
+<br><br>	
+	Add tags that describe your Spark:<br><br>
 		<%= f.text_field :tag_list, :placeholder => "fun, creative, athletic", :style => "width:50%;" %>
-<br>		
-		 	<%= f.submit %>
-</div>
+			<div class="neweventformbutton">
+			<%= f.button :'Spark This!', :class => 'btn' %>	
+			</div>
+</div>	
 </div>
 
 	
