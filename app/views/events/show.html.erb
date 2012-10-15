@@ -1,99 +1,97 @@
+<!#### START STYLE_EVENTS_SHOW ###### %>
 <div class="styleeventsshow">
-
-		
 		<% @event.memberships.first(@event.people).each do |membership| %><br> 
 		<% if membership.user_id == current_user.id %>
-<div class="eventnotice">
-		joined event
-</div>
+			<div class="eventnotice">
+				joined event
+			</div>
 		<% end %>
 		<% end %>
 
-			<% if @event.user.id == current_user.id %>
-<div class="eventnotice">
-			this is your event
-	</div>
-			<% end %>
+		<% if @event.user.id == current_user.id %>
+			<div class="eventnotice">
+				this is your event
+			</div>
+		<% end %>
 
 		
-		    <% if @event.memberships.count >= @event.people %>
-				<div class="eventfullribbon2">
+		<% if @event.memberships.count >= @event.people %>
+			<div class="eventfullribbon2">
 				<%= "This event is full" %>
-				</div>
-		    <% end %>
+			</div>
+		<% end %>
 
 		
-	<div class="eventsentence2">
-
-	<center>
-		<br>
+		<div class="eventsentence2">
+			<center>
+			<br>
 				<%= @event.user.username %> is looking for 
 				<%= @event.people %> people that want to
-		<div class="verbforevent">
+			<div class="verbforevent">
 				<%= @event.verb.downcase %>
-		</div>
-		<div class="nameofevent">
+			</div>
+			<div class="nameofevent">
 				<%= @event.name.downcase + "." %>
-		</div>
-		<div class="views">
-		&nbsp<%= @event.impressionist_count(:filter=>:session_hash)%> <i class="icon-eye-open"></i> 
-		</div>
-	</center>	
-	</div>	
-
+			</div>
+			<div class="views">
+&nbsp
+				<%= @event.impressionist_count(:filter=>:session_hash)%> 
+				<i class="icon-eye-open"></i> 
+			</div>
+			</center>	
+		</div>	
+<!#### START EVENT_SHOWBODY_LEFT ###### %>
 <div class="eventshowbodyleft">
-
-	<div class="tags2">
-		<% @event.tags.any? %>
-		<% @event.tags.each do |tag| %>
-		<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
-		<% end %>
-	</div>	
+				<div class="tags2">
+					<% @event.tags.any? %>
+					<% @event.tags.each do |tag| %>
+					<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
+					<% end %>
+				</div>	
 		
-	<br>	
-	<div class="eventheaderleft">
+<br>	
+					<div class="eventheaderleft">
+						Event Details
+<br>
+<br>	
+					</div>		
+		
+		
+				<div class="eventheaderright">
+		
+					<% if @event.user_id != current_user.id %>
+				<button class="btn btn-large btn-success">
+					<%= link_to "Join", join_event_path(@event) %> 
+				</button>
+		
+				<button class="btn btn-large btn-danger">
+					<%= link_to "Leave", unjoin_event_path(@event) %>	
+				</button>
+					<% end %>
+				</div>	
 	
-		Event Details<br><br>	
-			
-	</div>		
-	<div class="eventheaderright">	
-		
-	
-		<% if @event.user_id != current_user.id %>
-		<button class="btn btn-large btn-success">
-		<%= link_to "Join", join_event_path(@event) %> 
-		</button>
-		
-		<button class="btn btn-large btn-danger">
-			<%= link_to "Leave", unjoin_event_path(@event) %>	
-		</button>
-		<% end %>
-	</div>	
-	
-		
-		<div class="eventdate">
-		<i class="icon-calendar"></i>
-		</div>
-		<div class="bestinplaceeventshowdate">
-		<% if can? :update, @event %>
-		<%= best_in_place @event, :when, :type => :date, :nil => "Edit Date" %> <i class="icon-edit"></i>
-		<% end %> 
-		<% if cannot? :update, @event %>
-
-		<% if @event.when == nil %>
-		<%= "No set date"%>
-		<% else %>
-		<%= @event.when %>
-		<% end %>
-		<% end %>
-		</div>
+				<div class="eventdate">
+				<i class="icon-calendar"></i>
+				</div>
+				<div class="bestinplaceeventshowdate">
+					<% if can? :update, @event %>
+					<%= best_in_place @event, :when, :type => :date, :nil => "Edit Date" %> <i class="icon-edit"></i>
+					<% end %> 
+					<% if cannot? :update, @event %>
+					<% if @event.when == nil %>
+					<%= "No set date"%>
+					<% else %>
+					<%= @event.when %>
+					<% end %>
+					<% end %>
+				</div>
 	
 	&nbsp
 
-		<div class="eventlocationicon">
-		<i class="icon-map-marker"></i>
-		</div>
-		<div class="bestinplaceeventshowlocation">
+				<div class="eventlocationicon">
+					<i class="icon-map-marker"></i>
+				</div>
+				<div class="bestinplaceeventshowlocation">
 			<% if can? :update, @event %>
 			<%= best_in_place @event, :location, :nil => "Add Location" %> <i class="icon-edit"></i>
 			<% end %>
@@ -101,11 +99,11 @@
 			<%= @event.location %> 
 			<% end %>
 			<div class="milesaway">
-			<% if %>
-			<% @event.distance_from([current_user.latitude,current_user.longitude]) == nil %>
+				<% if %>
+				<% @event.distance_from([current_user.latitude,current_user.longitude]) == nil %>
 				<%= "no location to calculate distance" %>
 				<% else %>
-			(<%= pluralize(@event.distance_from([current_user.latitude,current_user.longitude]).round(0),"mile") %> away)
+				(<%= pluralize(@event.distance_from([current_user.latitude,current_user.longitude]).round(0),"mile") %> away)
 				<% end %>
 			</div>
 			
@@ -113,15 +111,14 @@
 			<div class="eventmembersicon">
 			<i class="icon-user"></i>
 			</div>
-			
-			<%= @event.user.username %>
+				<%= @event.user.username %>
 		</div>	
 		
-		&nbsp
-		<% if @event.memberships.first(@event.people).count == 1  %>
+	&nbsp
+			<% if @event.memberships.first(@event.people).count == 1  %>
 		 <div class="eventmembersicon2">
 		+ <i class="icon-user"></i>
-		</div>
+		 </div>
 		<% end %>
 		<% if @event.memberships.first(@event.people).count == 2 %>
 		<div class="eventmembersicon2">
@@ -140,10 +137,10 @@
 		<% end %>
 		<hr>
 		
-		<div class="eventheaderleft">
+			<div class="eventheaderleft">
 		Description
 		</div>
-		<br>
+<br>
 		
 			<div class="descriptionsection">
 			<i class="icon-pencil"></i>
@@ -153,9 +150,13 @@
 				<% end %>
 				<% if cannot? :update, @event %>
 				<div class="eventdescription">
-				<%= @event.description %> 
-				</div>	
+				<% if @event.description == nil %> 
+				<%= "No description added"%>
+				<% else %>
+				<%= @event.description %>
+				<% end %>	
 				<% end %>
+				</div>
 			</div>
 			</div>
 <br>
@@ -167,17 +168,21 @@
 
 <hr>
 
-<div class="eventheaderleft">
-Comments
-</div>
-<br>		
+			<div class="eventheaderleft">
+			Comments
+			</div>
+<br>
+<!#### START_COMMENT_SECTION ###### %>		
 <div class="commentsection">
 	<% @event.comments.reverse.each do |comment| %>
 		<%= link_to image_tag(comment.user.avatar.url(:thumb)), comment.user  %><br><br>
 		
 		<div class="commentbackground">
 			<div class="commentsusername">
-			<%= comment.user.username %> <div class="commentcreatedat">(<%= time_ago_in_words(comment.created_at) %> ago) </div>
+			<%= comment.user.username %> 
+			<div class="commentcreatedat">
+				(<%= time_ago_in_words(comment.created_at) %> ago) 
+			</div>
 			</div>
 		
 		
@@ -187,7 +192,7 @@ Comments
 		</div>
 	<% end %>
 
-<div class="commentform">
+	<div class="commentform">
 	<%= form_for ([@event, @event.comments.build]) do |f| %>
 	<%= f.text_area :body, :placeholder => "Add comment..", :rows => 3, :style => "width:680px" %>
 	<div class="commentformbutton">
@@ -195,12 +200,9 @@ Comments
 	</div>
 	<% end %>
 </div>
-
 </div>
-
+<!#### END_COMMENT_SECTION ###### %>
+</div>
+<!#### END_EVENT_SHOWBODY_LEFT ###### %>
 </div>	
-	
-</div>
-
-
-	
+<!#### END STYLE_EVENTS_SHOW ###### %>
