@@ -9,9 +9,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @search = Event.search(params[:q])
-    @events = @search.result
-    
-    
+    @events = @search.result.paginate(:page => params[:page], :per_page => 5 )
+  
+
     if params[:search].present?
        @events = Event.near(params[:search], 15, :order => :distance) 
      end

@@ -1,3 +1,4 @@
+
 	<div class="style">
 	<div class="mainbody">	
 		
@@ -18,9 +19,11 @@
 		<div class="eventdatesort">
 		Sort by: <%= sort_link @search, :created_at, "Date Added"%>
 		</div>
+		<div class="will_paginate">
+		<%= will_paginate @events, :previous_label => 'Previous' %>
+		</div>
 
-		<div class="eventsindex">
-			
+		<div class="eventsindex">	
 <% @events.order('created_at DESC').each do |event|%>
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
 <div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>

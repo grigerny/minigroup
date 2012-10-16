@@ -18,6 +18,7 @@
 	position:absolute;
 }
 .eventsindex{
+	height:1200px;
 	font-family:Arial;
 	font-size:20px;	
 }
@@ -26,10 +27,6 @@
 	display:inline;
 }
 
-.eventdatesort{
-	margin-left:0px;
-	margin-bottom:20px;
-}
 
 .views{
 	color:red;
@@ -305,8 +302,10 @@
 	float:right;
 	display:inline;
 	position:relative;
+	width:200px;
 	a:link {color:white;}
 	a:visited {color:white;}
+
 }
 
 .eventsshowright{
@@ -316,6 +315,7 @@
 }
 .eventsshowright2{
 	background-color:#EEEEEE;
+
 }
 
 .indexpicborder{
@@ -479,6 +479,23 @@
 	height:20px;
 	background-color:#45A1D1;
 	color:white;
-	text-align: center
+	text-align: center;
+	width:100%
 }
 
+.will_paginate { 
+	position: relative; 
+	top: 0px; 
+	right: 0px; 
+	bottom: 20px; 
+	left: 635px;
+	width:300px;
+}
+
+.eventdatesort{
+position:absolute;
+  top: 200;
+  left: 20;
+  width: 30;
+  height: 20;
+}

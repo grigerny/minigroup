@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
    def admin
          @user = session[:current_user]
     end
+    
 
     
 end
