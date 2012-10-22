@@ -16,18 +16,8 @@
 	font-family:Arial;
 	font-size:14px;
 	text-align:center;
-
 }
 .navmenu{
 	padding:20px;
 }
-.sidebar{
-	position:absolute;
-	margin-top:-18px;
-	background-color:#EBEFF2;
-	height:100%;
-	width:200px;
-	-moz-box-shadow: inset 0 0 2px #888;
-	-webkit-box-shadow: inset 0 0 2px#888;
-	box-shadow: inset 0 0 2px #888;
-}	
+	

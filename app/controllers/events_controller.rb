@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   
 
     if params[:search].present?
-       @events = Event.near(params[:search], 15, :order => :distance) 
+       @events = Event.near(params[:search], 15, :order => :distance).paginate(:page => params[:page], :per_page => 5 )
      end
      
     respond_to do |format|
