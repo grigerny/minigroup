@@ -1,5 +1,5 @@
 <!#### START STYLE_EVENTS_SHOW ###### %>
-<div class="styleeventsshow">
+<div class="style3">
 		<% @event.memberships.first(@event.people).each do |membership| %><br> 
 		<% if membership.user_id == current_user.id %>
 			<div class="eventnotice">
@@ -21,7 +21,7 @@
 			</div>
 		<% end %>
 
-		
+
 		<div class="eventsentence2">
 			<center>
 			<br>

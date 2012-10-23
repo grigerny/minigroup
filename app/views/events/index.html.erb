@@ -18,8 +18,8 @@
 		<%= text_field_tag :search, params[:search],:placeholder => "Brooklyn, NY or 11223", :class => "searchbar2" %>
 	
 		<button type="submit" class="btn btn-large">Near you</button>
-			</div>
-			</div>
+		</div>
+		</div>
 		<% end %>
 			<% end %>
 		</form>
@@ -47,6 +47,7 @@
 	</div>
 	<% end %>
 	
+<div class="indexeventwrapper">	
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
 <div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
 <div class="views">
@@ -59,8 +60,8 @@
 				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
 			<% end %>
 		</div>
-<div class="line">
-</div>
+		
+</div>		
 <% end %>
 
 		</div>
