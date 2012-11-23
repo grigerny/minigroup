@@ -5,10 +5,19 @@
 }
 
 body {	
-  background-color:#FDFDFD;
+  background-color:#FFFFFF;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+
+#footer {
+   position:absolute;
+   bottom:-500px;
+   width:100%;
+   height:80px;   /* Height of the footer */
+   background:#444444;
 }
 
 p, ol, ul, td {
