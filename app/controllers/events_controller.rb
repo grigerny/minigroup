@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @search = Event.search(params[:q])
     @events = @search.result.paginate(:page => params[:page], :per_page => 5 )
+ 
   
     if params[:search].present?
        @events = Event.near(params[:search], 15, :order => :distance).paginate(:page => params[:page], :per_page => 5 )
@@ -30,6 +31,15 @@ class EventsController < ApplicationController
       @user = current_user
       @user.ip_address = request.ip
       @user.save
+      
+      @search = Event.search(params[:q])
+      @events = @search.result.paginate(:page => params[:page], :per_page => 5 )
+
+
+      if params[:search].present?
+         @events = Event.near(params[:search], 15, :order => :distance).paginate(:page => params[:page], :per_page => 5 )
+       end
+      
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

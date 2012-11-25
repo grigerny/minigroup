@@ -1,63 +1,153 @@
-<!#### START STYLE_EVENTS_SHOW ###### %>
-<div class="style3">
-		<% @event.memberships.first(@event.people).each do |membership| %><br> 
-		<% if membership.user_id == current_user.id %>
-			<div class="eventnotice">
-				joined event
-			</div>
-		<% end %>
-		<% end %>
-
-		<% if @event.user.id == current_user.id %>
-			<div class="eventnotice">
-				this is your event
-			</div>
-		<% end %>
-
+	<div class="style3">
+	<div class="mainbody">	
 		
-		<% if @event.memberships.count >= @event.people %>
-			<div class="eventfullribbon2">
-				<%= "This event is full" %>
-			</div>
+	
+		<div class="searchindex">
+		<form class="form-search">
+		<%= search_form_for @search do |f| %>
+		<div class="searchbarbackground">
+		<div class="searchbar">
+		<%= f.text_field :name_cont, :placeholder => "Search For Events", :class => "searchbar" %>
+		<button type="submit" class="searchbutton">Search</button>
+		</div>
+		</div>
+	
+		<%= form_tag events_path, :method => :get do %>
+		<div class="searchbarbackground2">
+		<div class="searchbar2">
+		<%= text_field_tag :search, params[:search],:placeholder => "Search For Location", :class => "searchbar2" %>
+	
+		<button type="submit" class="searchbutton">Near you</button>
+		</div>
+		</div>
 		<% end %>
+			<% end %>
+		</form>
+		</div>
+	
+<div class="section2index">
+		<div class="eventdatesort">
+		Sort by: <%= sort_link @search, :when, "Starting Soon" %>
+		</div>
+	
+		<div class="will_paginate">
+		<%= will_paginate @events, :previous_label => 'Previous' %>
+		</div>
+</div>			
+
+		<div class="eventsindex">		
+<% @events.order('created_at DESC').each do |event|%>
+
+	<div class="eventnewribbon">
+		<%= time_ago_in_words(event.created_at).gsub('about','') %> ago
+	</div>
 
 
-		<div class="eventsentence2">
-			<center>
-			<br>
-				<%= @event.user.username %> is looking for 
-				<%= @event.people %> people that want to
-			<div class="verbforevent">
-				<%= @event.verb.downcase %>
-			</div>
-			<div class="nameofevent">
-				<%= @event.name.downcase + "." %>
-			</div>
-			<div class="views">
-&nbsp
-				<%= @event.impressionist_count(:filter=>:session_hash)%> 
-				<i class="icon-eye-open"></i> 
-			</div>
-			</center>	
-		</div>	
+	<% if event.memberships.count >= event.people %>
+	<div class="eventfullribbon">
+	<%= "QKMeet Full" %>
+	</div>
+	<% end %>
+	
+<div class="indexeventwrapper">	
+<div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
+<div class="eventsentence"> <%= event.user.username %> and <%= event.people %> people </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= event.name.downcase + "." %></div>
+
+	<div class="datewrapper">
+		<i class="icon-calendar"></i>
+		<div class="date">
+			
+			<% if Date.today == event.when %>
+			<%= "Today" %>
+			<% else if Date.tomorrow == event.when %>
+			<%= "Tomorrow" %>
+			<% else %>
+			<%= distance_of_time_in_words(event.when, Date.today, true) rescue nil%> ago
+			<% end %>
+			<% end %>
+			
+
+		</div>
+	</div>
+	
+	<div class="locationwrapper">
+	<i class="icon-map-marker"></i>
+	<div class="location">
+	<%= event.location %>
+	</div>
+	
+	</div>
+	<div class="tagswrapper">
+		<i class="icon-tags"></i>
+		<% event.tags.each do |tag| %>
+		<div class="tags">
+			<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
+		</div>
+		<% end %>
+	</div>	
+
+<div class="views">
+<%= event.impressionist_count(:filter=>:session_hash) %>
+<i class="icon-eye-open"></i> 
+</div>	
+
+<div class="details">	
+<%= link_to "More..", event %>
+</div>
+</div>
+
+<div class="line">
+</div>	
+
+<% end %>
+		</div>
+		
+<!#-------------------------------------START OF RIGHT SIDEBAR-----------------------------------%>		
+<div class="rightside">					
+	
+		<!#------------------------------Joined Event Notice START---------------------%>		
+			<% @event.memberships.first(@event.people).each do |membership| %><br> 
+			<% if membership.user_id == current_user.id %>
+				<div class="eventnotice">
+					joined event
+				</div>
+			<% end %>
+			<% end %>
+		<!#------------------------------Joined Event Notice END-----------------------%>	
+			
+<!#-------------------------------------START_COMMENT_SECTION------------------------------------%>		
+		
+				<% @event.comments.reverse.each do |comment| %>
+					<%= link_to image_tag(comment.user.avatar.url(:thumb)), comment.user  %><br><br>
+						<%= comment.user.username %> 
+							(<%= time_ago_in_words(comment.created_at) %> ago) 
+						<%= comment.body %><br>
+				<% end %>
+
+				<%= form_for ([@event, @event.comments.build]) do |f| %>
+				<%= f.text_area :body, :placeholder => "Add comment..", :rows => 3, :style => "width:250px" %><br>
+				<%= f.button :'Post', :class => 'btn' %>	
+				<% end %>	
+<!#------------------------------------END OF_COMMENT_SECTION------------------------------------%>	
+		</div>
+		
+	</div>
+	</div>		
+
+
+
+
+
 <!#### START EVENT_SHOWBODY_LEFT ###### %>
-<div class="eventshowbodyleft">
-				<div class="tags2">
+
+				<div class="tags">
 					<% @event.tags.any? %>
 					<% @event.tags.each do |tag| %>
 					<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>	
 					<% end %>
 				</div>	
-		
-<br>	
-					<div class="eventheaderleft">
-						Event Details
-<br>
-<br>	
-					</div>		
-		
-		
-				<div class="eventheaderright">
+			
+			
 		
 					<% if @event.user_id != current_user.id %>
 				<button class="btn btn-large btn-success">
@@ -68,7 +158,6 @@
 					<%= link_to "Leave", unjoin_event_path(@event) %>	
 				</button>
 					<% end %>
-				</div>	
 	
 				<div class="eventdate">
 				<i class="icon-calendar"></i>
@@ -137,11 +226,6 @@
 		<% end %>
 		<hr>
 		
-			<div class="eventheaderleft">
-		Description
-		</div>
-<br>
-		
 			<div class="descriptionsection">
 			<i class="icon-pencil"></i>
 			<div class="bestinplaceeventshow">
@@ -165,44 +249,3 @@
 				<% @event.memberships.first(@event.people).each do |membership| %>
 				<%= link_to image_tag(membership.user.avatar.url(:thumb)), membership.user %>
 				<% end %>
-
-<hr>
-
-			<div class="eventheaderleft">
-			Comments
-			</div>
-<br>
-<!#### START_COMMENT_SECTION ###### %>		
-<div class="commentsection">
-	<% @event.comments.reverse.each do |comment| %>
-		<%= link_to image_tag(comment.user.avatar.url(:thumb)), comment.user  %><br><br>
-		
-		<div class="commentbackground">
-			<div class="commentsusername">
-			<%= comment.user.username %> 
-			<div class="commentcreatedat">
-				(<%= time_ago_in_words(comment.created_at) %> ago) 
-			</div>
-			</div>
-		
-		
-			<div class="commentsbody">
-			<%= comment.body %>
-			</div>
-		</div>
-	<% end %>
-
-	<div class="commentform">
-	<%= form_for ([@event, @event.comments.build]) do |f| %>
-	<%= f.text_area :body, :placeholder => "Add comment..", :rows => 3, :style => "width:680px" %>
-	<div class="commentformbutton">
-	<%= f.button :'Post', :class => 'btn' %>	
-	</div>
-	<% end %>
-</div>
-</div>
-<!#### END_COMMENT_SECTION ###### %>
-</div>
-<!#### END_EVENT_SHOWBODY_LEFT ###### %>
-</div>	
-<!#### END STYLE_EVENTS_SHOW ###### %>

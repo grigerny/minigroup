@@ -28,7 +28,7 @@
 	
 <div class="section2index">
 		<div class="eventdatesort">
-		Sort by: <%= sort_link @search, :created_at, "Date Added"%>
+		Sort by: <%= sort_link @search, :when, "Starting Soon" %>
 		</div>
 	
 		<div class="will_paginate">
@@ -38,11 +38,11 @@
 
 		<div class="eventsindex">		
 <% @events.order('created_at DESC').each do |event|%>
-	<% if event.created_at >= 1.day.ago %>
+
 	<div class="eventnewribbon">
-		<%= time_ago_in_words(event.created_at) %> ago
+		<%= time_ago_in_words(event.created_at).gsub('about','') %> ago
 	</div>
-	<% end %>
+
 
 	<% if event.memberships.count >= event.people %>
 	<div class="eventfullribbon">
@@ -52,39 +52,65 @@
 	
 <div class="indexeventwrapper">	
 <div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
-<div class="eventsentence"> I am looking for <%= event.people %> people that want to </div><div class="verbforevent"><%= event.verb.downcase %></div><div class="nameofevent"><%= link_to event.name.downcase + ".", event %></div>
+<div class="eventsentence"> <%= event.user.username %> and <%= event.people %> people </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= event.name.downcase + "." %></div>
+
+	<div class="datewrapper">
+		<i class="icon-calendar"></i>
+		<div class="date">
+			
+			<% if Date.today == event.when %>
+			<%= "Today" %>
+			<% else if Date.tomorrow == event.when %>
+			<%= "Tomorrow" %>
+			<% else %>
+			<%= distance_of_time_in_words(event.when, Date.today, true) rescue nil%> ago
+			<% end %>
+			<% end %>
+			
+
+		</div>
+	</div>
+	
+	<div class="locationwrapper">
+	<i class="icon-map-marker"></i>
+	<div class="location">
+	<%= event.location %>
+	</div>
+	
+	</div>
+	<div class="tagswrapper">
+		<i class="icon-tags"></i>
+		<% event.tags.each do |tag| %>
+		<div class="tags">
+			<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
+		</div>
+		<% end %>
+	</div>	
+
 <div class="views">
-<%= event.impressionist_count(:filter=>:session_hash)%>
+<%= event.impressionist_count(:filter=>:session_hash) %>
 <i class="icon-eye-open"></i> 
 </div>	
-		<div class="tags">
-			<i class="icon-tags"></i>
-			<% event.tags.each do |tag| %>
-				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
-			<% end %>
-		</div>
-		
-</div>
 
+<div class="details">	
+<%= link_to "More..", event %>
+</div>
+</div>
 
 <div class="line">
 </div>	
 
-
-
-
 <% end %>
 		</div>
-		<div class="rightside">
-
+		<div class="rightside">		
 			<!-- Button to trigger modal -->
-			<a href="#myModal" role="button" class="modalbutton" data-toggle="modal">Start a qkmeet</a>
+			<a href="#myModal" role="button" class="modalbutton" data-toggle="modal">New qkmeet</a>
 
 			<!-- Modal -->
 			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-header">
 			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			    <h3 id="myModalLabel">Start a qkmeet</h3>
+			    <h3 id="myModalLabel">New qkmeet</h3>
 			  </div>
 			  <div class="modal-body">
 			    <p><%= render 'form' %></p>
@@ -94,6 +120,19 @@
 			    <button class="btn btn-primary">Submit</button>
 			  </div>
 			</div>
+			<br>
+			
+			<div class="toptagssection">
+					<h3>Top Tags</h3>
+				<% @tags = Event.tag_counts %> 
+				<% @tags.order('count DESC').limit('10').each do |tag| %>
+				<div class="toptags">
+				<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %><br>
+				</div>
+				<% end %>
+			</div>	
+	
+			
 		</div>
 		
 	</div>
