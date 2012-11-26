@@ -19,9 +19,9 @@ class EventsController < ApplicationController
      
     respond_to do |format|
       format.html # index.html.erb
+      ajax_respond format, :section_id => "page"
       format.json { render json: @events }
     end
-    
   end
 
   # GET /events/1

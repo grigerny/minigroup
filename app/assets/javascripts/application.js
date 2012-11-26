@@ -18,3 +18,5 @@
 //= require best_in_place
 //= require twitter/bootstrap
 //= require_tree .
+//= require ajax_pagination
+//= require history

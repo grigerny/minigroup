@@ -1,0 +1,82 @@
+<div class="section2index">
+		<div class="eventdatesort">
+		<%= ajax_links :section_id => "page" do %>
+		Sort by: <%= sort_link @search, :when, "Starting Soon" %>
+		<% end %>
+		</div>
+	
+		<div class="will_paginate">
+		<%= ajax_links :section_id => "page" do %>
+		<%= will_paginate @events, :previous_label => 'Previous' %>
+		<% end %>
+		</div>
+</div>			
+
+		<div class="eventsindex">
+<%= ajax_loadzone do %>			
+<% @events.order('created_at DESC').each do |event|%>
+
+	<div class="eventnewribbon">
+		<%= time_ago_in_words(event.created_at).gsub('about','') %> ago
+	</div>
+
+
+	<% if event.memberships.count >= event.people %>
+	<div class="eventfullribbon">
+	<%= "QKMeet Full" %>
+	</div>
+	<% end %>
+	
+<div class="indexeventwrapper">	
+<div class="indexpicborder"><%= link_to (image_tag event.user.avatar.url(:thumb)), event.user %></div>
+<div class="eventsentence"> <%= event.user.username %> and <%= event.people %> people </div><div class="verbforevent"><%= event.verb %></div><div class="nameofevent"><%= event.name.downcase + "." %></div>
+
+	<div class="datewrapper">
+		<i class="icon-calendar"></i>
+		<div class="date">
+			
+			<% if Date.today == event.when %>
+			<%= "Today" %>
+			<% else if Date.tomorrow == event.when %>
+			<%= "Tomorrow" %>
+			<% else %>
+			<%= distance_of_time_in_words(event.when, Date.today, true) rescue nil%> ago
+			<% end %>
+			<% end %>
+			
+
+		</div>
+	</div>
+	
+	<div class="locationwrapper">
+	<i class="icon-map-marker"></i>
+	<div class="location">
+	<%= event.location %>
+	</div>
+	
+	</div>
+	<div class="tagswrapper">
+		<i class="icon-tags"></i>
+		<% event.tags.each do |tag| %>
+		<div class="tags">
+			<%= link_to "#" + tag.name, tagged_url(:tag => tag.name) %>
+		</div>
+		<% end %>
+	</div>	
+
+<div class="views">
+<%= event.impressionist_count(:filter=>:session_hash) %>
+<i class="icon-eye-open"></i> 
+</div>	
+
+<div class="details">	
+<%= link_to "More..", event %>
+</div>
+</div>
+
+<div class="line">
+</div>		
+
+<% end %>
+<% end %>
+		</div>
